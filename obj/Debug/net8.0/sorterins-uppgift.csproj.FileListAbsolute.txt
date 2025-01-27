@@ -12,3 +12,4 @@ C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\sorterins-uppgi
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\sorterins-uppgift\obj\Debug\net8.0\sorterins-uppgift.pdb
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\sorterins-uppgift\obj\Debug\net8.0\sorterins-uppgift.genruntimeconfig.cache
 C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\sorterins-uppgift\obj\Debug\net8.0\ref\sorterins-uppgift.dll
+C:\Users\alle07002\OneDrive - Växjö kommun\Skrivbordet\program\sorterins-uppgift\obj\Debug\net8.0\sorterins-uppgift.sourcelink.json

@@ -13,26 +13,38 @@ string[] namn = {"Adam", "Agnes", "Albin", "Alice", "Amanda", "Anders", "Anna", 
     "Susanne", "Tobias", "Vera", "Viktor", "Wilma", "William", "Ylva", "Åsa", "Örjan", "Ah", "åå"};
 List<personer> PersonLista = new List<personer>();
 
-int HurMånga = 10;
+// hur många personer du vill a i personlista.
+int HurMånga = 100000;
+
 Random r = new Random();
 for(int i = 0; i < HurMånga+1; i+=1){
     int a = r.Next(1,10);
-    PersonLista.Add(new personer(a,namn[i]));
+    PersonLista.Add(new personer(a,namn[r.Next(1,namn.Count())]));
 }
 
 /* Nu har vi några namn o person nummer i listan */
-/*  bara på den första sen behöver man bara 
-    en sån method för att sortera in en person */
+
 
 Skriv(PersonLista);
+Console.WriteLine("Om ");
 for(int i = 3; i > 0; i--){
-    Console.WriteLine("Om " + i);
+    Console.Write(i + " ");
     Thread.Sleep(1000);
 }
 Console.WriteLine("Kör");
-for(int i = 0; i != PersonLista.Count; i++){
-    Sortera_Stor_Små(ref PersonLista);
+
+//uppgift 1
+if(false){
+    // det är bara i första sorteringen som man behöver for loopen
+    for(int i = 0; i != PersonLista.Count; i++){
+        Sortera_Stor_Små(ref PersonLista);
+    }
 }
+// uppgift 2
+if(true){
+   PersonLista = MergeSort(PersonLista);
+}
+
 Skriv(PersonLista);
 Console.WriteLine("done");
 
@@ -98,6 +110,55 @@ static void FlerMedSamma(List<personer> PL, int Plats){
     }
     
 }
+
+static List<personer> MergeSort(List<personer> PL){
+    if (PL.Count <= 1)
+        return PL;
+
+    int Mitten = PL.Count / 2;
+
+    // Dela listan i två halvor
+    List<personer> AllaPåVSida = MergeSort(PL.GetRange(0, Mitten));
+    List<personer> AllaPåHSida = MergeSort(PL.GetRange(Mitten, PL.Count - Mitten));
+
+    // Slå ihop de sorterade halvorna
+    return Merge(AllaPåVSida, AllaPåHSida);
+}
+
+
+// Merge-metoden
+static List<personer> Merge(List<personer> AllaPåVSida, List<personer> AllaPåHSida){
+    List<personer> result = new List<personer>();
+    int i = 0;
+    int j = 0;
+
+    // Jämför och slå ihop
+    while (i < AllaPåVSida.Count && j < AllaPåHSida.Count){
+        if (AllaPåVSida[i].nummer <= AllaPåHSida[j].nummer){ // Sortera baserat på nummer
+            result.Add(AllaPåVSida[i]);
+            i++;
+        }
+        else{
+            result.Add(AllaPåHSida[j]);
+            j++;
+        }
+    }
+
+    
+    while (i < AllaPåVSida.Count){
+        result.Add(AllaPåVSida[i]);
+        i++;
+    }
+
+    
+    while (j < AllaPåHSida.Count){
+        result.Add(AllaPåHSida[j]);
+        j++;
+    }
+
+    return result;
+}
+
 
 
 static void Skriv(List<personer> PL){
