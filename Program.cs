@@ -14,11 +14,11 @@ string[] namn = {"Adam", "Agnes", "Albin", "Alice", "Amanda", "Anders", "Anna", 
 List<personer> PersonLista = new List<personer>();
 
 // hur många personer du vill a i personlista.
-int HurMånga = 100000;
+int HurMånga = 1000;
 
 Random r = new Random();
 for(int i = 0; i < HurMånga+1; i+=1){
-    int a = r.Next(1,10);
+    int a = r.Next(1000,10000);
     PersonLista.Add(new personer(a,namn[r.Next(1,namn.Count())]));
 }
 
@@ -110,6 +110,8 @@ static void FlerMedSamma(List<personer> PL, int Plats){
     }
     
 }
+
+
 
 static List<personer> MergeSort(List<personer> PL){
     if (PL.Count <= 1)
