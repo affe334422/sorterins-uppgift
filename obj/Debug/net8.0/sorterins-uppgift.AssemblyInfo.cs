@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sorterins-uppgift")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5c465a2e09b8292b3f5bb53cf3d2cf142eb0203")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a4f61e128b468df992521a8d0e65f10c3c9030d")]
 [assembly: System.Reflection.AssemblyProductAttribute("sorterins-uppgift")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sorterins-uppgift")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

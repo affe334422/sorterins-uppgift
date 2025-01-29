@@ -49,7 +49,7 @@ Skriv(PersonLista);
 Console.WriteLine("done");
 
 
-/*
+
 Console.WriteLine("Vad heter du");
 string Namn = Console.ReadLine();
 Console.WriteLine("Vilket person nummer har du");
@@ -69,7 +69,6 @@ if(VemDuLetar(PersonLista, lala) != null){
 else{
     Console.WriteLine("Är det någon av de personer du säker?");
 }
-*/
 
 
 static string VemDuLetar(List<personer> PL, int PNummer){
