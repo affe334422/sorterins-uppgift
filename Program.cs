@@ -113,15 +113,27 @@ static void FlerMedSamma(List<personer> PL, int Plats){
 
 
 static List<personer> MergeSort(List<personer> PL){
+    // del 1
     if (PL.Count <= 1)
         return PL;
 
     int Mitten = PL.Count / 2;
 
+    // del 2
     // Dela listan i två halvor
     List<personer> AllaPåVSida = MergeSort(PL.GetRange(0, Mitten));
     List<personer> AllaPåHSida = MergeSort(PL.GetRange(Mitten, PL.Count - Mitten));
-
+    /*
+    varje / är en ny Mergsort method. allapå v och h sida
+        1 list = 1,5,7,3,9,8,4,2 skip del 1
+        2 list 1,5,7,3 / 9,8,4,2 skip del 1
+        3 list 1,5 / 7,3 / 9,8 / 4,2 skip del 1
+        4 list 1 / 5 / 7 / 3 / 9 / 8 / 4 / 2 Kör del 1 
+            Nu är det 1st i list PL så den ger tillbaka PL i del 1
+            Och då får del 2 i nummer 3 de singulära talen. och 
+            skickar ner den till Merge.
+    */
+    // del 3
     // Slå ihop de sorterade halvorna
     return Merge(AllaPåVSida, AllaPåHSida);
 }
@@ -132,23 +144,46 @@ static List<personer> Merge(List<personer> AllaPåVSida, List<personer> AllaPåH
     List<personer> result = new List<personer>();
     int i = 0;
     int j = 0;
+    /*
+        Nu är det 4
+        4 list 1 / 5 / 7 / 3 / 9 / 8 / 4 / 2
+        Nu if 1 < 5 / 7 < 3 / 9 < 8 / 4 < 2
+        return 1,5 / 3,7 / 8,9 / 2,4
+        3. list 1,5 / 3,7 / 8,9 / 2,4
+            nu if 1 < 3
+            resultat = 1,
+            if 5 < 3
+            resultat = 1,3
+            if 5 < 7
+            reultat = 1,3,5
+            lägget till det som är över (7) i resultat
+            resultat = 1,3,5,7
+        sen samma sak med 8,9 / 2,4
+        resultat = 2,4,8,9
+        2 list 1,3,5,7 / 2,4,8,9
+        if 1 < 2 o så vidare
+        tillsist resultat = 1,2,3,4,5,7,8,9
+        tillbaka till mergesort som ger return 1,2,3,4,5,7,8,9
+    */
+
 
     // Jämför och slå ihop
-    while (i < AllaPåVSida.Count && j < AllaPåHSida.Count){
-        if (AllaPåVSida[i].nummer <= AllaPåHSida[j].nummer){ // Sortera baserat på nummer
-            result.Add(AllaPåVSida[i]);
-            i++;
+
+    while (i < AllaPåVSida.Count && j < AllaPåHSida.Count){// medans i = 0 är mindre än allavsida längd och j = 0 mindre än allahsida längd
+        if (AllaPåVSida[i].nummer <= AllaPåHSida[j].nummer){ // om nummret på plats 0 i allaVsida är mindre än nummret på plats 0 i allaHsida
+            result.Add(AllaPåVSida[i]); // då lägger den till nummret på plats 0 i allaVsida till resultatet
+            i++; 
         }
         else{
-            result.Add(AllaPåHSida[j]);
+            result.Add(AllaPåHSida[j]); // annars lägger den till talet på plats 0 i allaHsida till resultatet.
             j++;
         }
     }
 
     
-    while (i < AllaPåVSida.Count){
-        result.Add(AllaPåVSida[i]);
-        i++;
+    while (i < AllaPåVSida.Count){ // om det är olika många nummer i listorna så en tar slut tidigare
+        result.Add(AllaPåVSida[i]);// så skickas den ner till dessa koderna för att lägga till det nummer
+        i++;                       // som är över i resultat, det ända kortet som kan vara över är det som är högst.
     }
 
     
